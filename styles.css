@@ -453,6 +453,29 @@ section {
   font-weight: bold;
 }
 
+/* ── Photos / Gallery ────────────────────────── */
+.photos {
+  background: #ffffff;
+  text-align: center;
+}
+
+.gallery-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.gallery-icon {
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.gallery-btn {
+  font-size: 0.9rem;
+  padding: 1rem 2.8rem;
+}
+
 /* ── Social / Facebook ───────────────────────── */
 .social {
   background: var(--section-alt);
