@@ -361,15 +361,13 @@ st.markdown(
     .n9b-footer-copy { font-size: .78rem; color: #444; }
 
     /* ── Age Gate ────────────────────────────────────────── */
-    .n9b-age-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(10,10,20,.97);
-      z-index: 9999;
+    .n9b-age-gate-page {
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
+      background: rgba(10,10,20,.97);
+      padding: 2rem 1rem;
     }
     .n9b-age-box {
       background: var(--dark-bg);
@@ -404,7 +402,7 @@ st.markdown(
       margin-bottom: 2rem;
     }
 
-    /* Streamlit button overrides inside age gate area */
+    /* Streamlit button overrides for age gate */
     div[data-testid="stVerticalBlock"] .stButton > button {
       border-radius: 3px;
       font-family: Arial, sans-serif;
@@ -413,11 +411,6 @@ st.markdown(
       letter-spacing: .15em;
       padding: .85rem 2.4rem;
       width: 100%;
-    }
-
-    /* Center the age gate buttons vertically over the fixed overlay */
-    .n9b-age-btn-spacer {
-      height: 38vh;
     }
 
     @media (max-width: 768px) {
@@ -435,22 +428,23 @@ if "age_verified" not in st.session_state:
 # ── Age Verification Gate ─────────────────────────────────────────────────────
 if not st.session_state.age_verified:
     st.markdown(
-        """
-        <div class="n9b-age-overlay">
-          <div class="n9b-age-box">
-            <div class="n9b-age-logo">99</div>
-            <div class="n9b-age-brand">Ninety 9 Bottles</div>
-            <h2>Are you 21 or older?</h2>
-            <p>You must be of legal drinking age to enter this website.
-               Please verify your age to continue.</p>
-          </div>
-        </div>
-        """,
+        '<div class="n9b-age-gate-page">',
         unsafe_allow_html=True,
     )
-    col1, col2, col3 = st.columns([2, 2, 2])
-    with col2:
-        st.markdown('<div class="n9b-age-btn-spacer"></div>', unsafe_allow_html=True)
+    _, col, _ = st.columns([1, 2, 1])
+    with col:
+        st.markdown(
+            """
+            <div class="n9b-age-box">
+              <div class="n9b-age-logo">99</div>
+              <div class="n9b-age-brand">Ninety 9 Bottles · Fairfield County, CT</div>
+              <h2>Are you 21 or older?</h2>
+              <p>You must be of legal drinking age to enter this website.
+                 Please verify your age to continue.</p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
         if st.button("✅  Yes, I'm 21+", use_container_width=True, type="primary"):
             st.session_state.age_verified = True
             st.rerun()
@@ -459,6 +453,7 @@ if not st.session_state.age_verified:
             "https://www.responsibility.org/",
             use_container_width=True,
         )
+    st.markdown("</div>", unsafe_allow_html=True)
     st.stop()
 
 # ── Navigation ────────────────────────────────────────────────────────────────
