@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ninety 9 Bottles | Beer, Wine &amp; Spirits – Fairfield County, CT</title>
   <meta name="description" content="Ninety 9 Bottles is Fairfield County's favorite locally owned beer, wine, and spirits shop. Three locations in Trumbull, Westport, and Norwalk, CT." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -37,7 +40,22 @@
       <li><a href="#photos">Photos</a></li>
       <li><a href="#social">Follow Us</a></li>
     </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="nav-mobile" id="navMobile" role="dialog" aria-label="Site navigation">
+    <a href="#about" class="nav-mobile-link">About</a>
+    <a href="#reviews" class="nav-mobile-link">Reviews</a>
+    <a href="#locations" class="nav-mobile-link">Locations</a>
+    <a href="#hours" class="nav-mobile-link">Hours</a>
+    <a href="#photos" class="nav-mobile-link">Photos</a>
+    <a href="#social" class="nav-mobile-link">Follow Us</a>
+  </div>
 
   <!-- Hero -->
   <section class="hero" id="home">
@@ -388,7 +406,6 @@
         width="500"
         height="600"
         scrolling="no"
-        style="border:none;"
         allowfullscreen="true"
         allow="clipboard-write; encrypted-media; picture-in-picture"
         title="Ninety 9 Bottles Facebook Page">
@@ -487,6 +504,39 @@
   <script>
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Hamburger menu
+    (function () {
+      var btn    = document.getElementById('navHamburger');
+      var mobile = document.getElementById('navMobile');
+      var links  = mobile.querySelectorAll('a');
+
+      function openMenu() {
+        btn.classList.add('open');
+        mobile.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        btn.classList.remove('open');
+        mobile.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      btn.addEventListener('click', function () {
+        btn.classList.contains('open') ? closeMenu() : openMenu();
+      });
+
+      links.forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+    })();
 
     // Age gate
     const overlay = document.getElementById('ageGate');
