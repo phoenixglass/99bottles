@@ -35,8 +35,10 @@ st.markdown(
     }
 
     /* Hide default Streamlit chrome that clutters the view */
-    #MainMenu, footer, header { visibility: hidden; }
-    [data-testid="stToolbar"] { display: none; }
+    #MainMenu, footer, header { display: none !important; }
+    [data-testid="stToolbar"] { display: none !important; }
+    [data-testid="stHeader"] { display: none !important; }
+    [data-testid="stDeployButton"] { display: none !important; }
     .block-container { padding-top: 0 !important; max-width: 100% !important; }
 
     /* ── Navbar ──────────────────────────────────────────── */
@@ -361,14 +363,6 @@ st.markdown(
     .n9b-footer-copy { font-size: .78rem; color: #444; }
 
     /* ── Age Gate ────────────────────────────────────────── */
-    .n9b-age-gate-page {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(10,10,20,.97);
-      padding: 2rem 1rem;
-    }
     .n9b-age-box {
       background: var(--dark-bg);
       border: 1px solid var(--primary);
@@ -416,6 +410,98 @@ st.markdown(
     @media (max-width: 768px) {
       .n9b-nav-links { display: none; }
     }
+
+    /* ── Reviews Carousel ────────────────────────────────── */
+    .n9b-reviews {
+      background: var(--dark-bg);
+      padding: 4rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .n9b-reviews .n9b-section-label { color: var(--primary); }
+    .n9b-reviews .n9b-section-title { color: var(--text-light); }
+    .n9b-reviews-track-wrapper {
+      position: relative;
+      max-width: 760px;
+      margin: 2.5rem auto 0;
+      min-height: 200px;
+    }
+    .n9b-review-slide {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+    }
+    .n9b-review-slide.active {
+      opacity: 1;
+      position: relative;
+      pointer-events: auto;
+    }
+    .n9b-review-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(200,169,110,0.25);
+      border-radius: 10px;
+      padding: 2rem 2.5rem;
+      text-align: center;
+    }
+    .n9b-review-stars {
+      color: #FFD700;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+    .n9b-review-text {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    .n9b-review-author {
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .n9b-review-source {
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+    .n9b-review-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.8rem;
+    }
+    .n9b-review-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(200,169,110,0.3);
+      cursor: pointer;
+      transition: background 0.3s;
+      border: none;
+      padding: 0;
+    }
+    .n9b-review-dot.active { background: var(--primary); }
+
+    /* ── Facebook Feed ───────────────────────────────────── */
+    .n9b-fb-feed-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
+    .n9b-fb-feed-wrap iframe {
+      border: none;
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 100%;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -427,8 +513,15 @@ if "age_verified" not in st.session_state:
 
 # ── Age Verification Gate ─────────────────────────────────────────────────────
 if not st.session_state.age_verified:
+    # Apply full-screen dark background via CSS on the Streamlit container
     st.markdown(
-        '<div class="n9b-age-gate-page">',
+        """
+        <style>
+        [data-testid="stAppViewContainer"] { background: rgba(10,10,20,0.97) !important; }
+        [data-testid="stMain"] { background: transparent !important; }
+        .block-container { padding-top: 8vh !important; padding-bottom: 4rem !important; }
+        </style>
+        """,
         unsafe_allow_html=True,
     )
     _, col, _ = st.columns([1, 2, 1])
@@ -453,7 +546,6 @@ if not st.session_state.age_verified:
             "https://www.responsibility.org/",
             use_container_width=True,
         )
-    st.markdown("</div>", unsafe_allow_html=True)
     st.stop()
 
 # ── Navigation ────────────────────────────────────────────────────────────────
@@ -730,7 +822,110 @@ st.markdown(
           Ninety 9 Bottles on Facebook
         </a>
       </div>
+      <div class="n9b-fb-feed-wrap">
+        <iframe
+          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fp%2FNinety9Bottles-100057827252531%2F&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+          width="500"
+          height="600"
+          scrolling="no"
+          style="border:none;"
+          allowfullscreen="true"
+          allow="clipboard-write; encrypted-media; picture-in-picture"
+          title="Ninety 9 Bottles Facebook Page">
+        </iframe>
+      </div>
     </section>
+    """,
+    unsafe_allow_html=True,
+)
+
+# ── Customer Reviews ──────────────────────────────────────────────────────────
+st.markdown(
+    """
+    <section class="n9b-reviews" id="reviews">
+      <div class="n9b-section-header">
+        <span class="n9b-section-label">What Our Customers Say</span>
+        <h2 class="n9b-section-title" style="color:var(--text-light);">Customer Reviews</h2>
+        <p class="n9b-section-desc" style="color:var(--text-muted);">
+          See what our neighbors across Fairfield County are saying about Ninety 9 Bottles.
+        </p>
+      </div>
+      <div class="n9b-reviews-track-wrapper" id="n9bReviewsWrapper">
+        <div class="n9b-review-slide active">
+          <div class="n9b-review-card">
+            <div class="n9b-review-stars">★★★★★</div>
+            <p class="n9b-review-text">"Best bottle shop in all of Fairfield County! The staff is incredibly knowledgeable and helped me find the perfect whiskey for my husband's birthday. We'll definitely be coming back — this place is a gem!"</p>
+            <div class="n9b-review-author">Sarah M.</div>
+            <div class="n9b-review-source">⭐ Facebook Review · Trumbull Location</div>
+          </div>
+        </div>
+        <div class="n9b-review-slide">
+          <div class="n9b-review-card">
+            <div class="n9b-review-stars">★★★★★</div>
+            <p class="n9b-review-text">"Unbelievable craft beer selection. They always have so many hard-to-find local and regional brews that I can't find anywhere else. The staff is always happy to give recommendations — love this place!"</p>
+            <div class="n9b-review-author">James R.</div>
+            <div class="n9b-review-source">⭐ Facebook Review · Westport Location</div>
+          </div>
+        </div>
+        <div class="n9b-review-slide">
+          <div class="n9b-review-card">
+            <div class="n9b-review-stars">★★★★★</div>
+            <p class="n9b-review-text">"I've been coming to the Trumbull location for years. Great prices, a fantastic selection of wines and spirits, and the friendliest staff around. My absolute go-to bottle shop in CT!"</p>
+            <div class="n9b-review-author">Lisa T.</div>
+            <div class="n9b-review-source">⭐ Facebook Review · Trumbull Location</div>
+          </div>
+        </div>
+        <div class="n9b-review-slide">
+          <div class="n9b-review-card">
+            <div class="n9b-review-stars">★★★★★</div>
+            <p class="n9b-review-text">"The Westport location never disappoints. Their wine selection is superb and they host great in-store tastings. Found my new favorite red wine there last weekend. Highly recommend!"</p>
+            <div class="n9b-review-author">Mike D.</div>
+            <div class="n9b-review-source">⭐ Facebook Review · Westport Location</div>
+          </div>
+        </div>
+        <div class="n9b-review-slide">
+          <div class="n9b-review-card">
+            <div class="n9b-review-stars">★★★★★</div>
+            <p class="n9b-review-text">"Amazing spirits selection at the Norwalk shop! The staff really knows their stuff and pointed me to a small-batch bourbon I absolutely love. So happy to have a shop like this in our community."</p>
+            <div class="n9b-review-author">Amanda K.</div>
+            <div class="n9b-review-source">⭐ Facebook Review · Norwalk Location</div>
+          </div>
+        </div>
+      </div>
+      <div class="n9b-review-dots" id="n9bReviewDots">
+        <button class="n9b-review-dot active" onclick="n9bGoTo(0)" aria-label="Review 1"></button>
+        <button class="n9b-review-dot" onclick="n9bGoTo(1)" aria-label="Review 2"></button>
+        <button class="n9b-review-dot" onclick="n9bGoTo(2)" aria-label="Review 3"></button>
+        <button class="n9b-review-dot" onclick="n9bGoTo(3)" aria-label="Review 4"></button>
+        <button class="n9b-review-dot" onclick="n9bGoTo(4)" aria-label="Review 5"></button>
+      </div>
+    </section>
+
+    <script>
+    (function () {
+      var slides = document.querySelectorAll('.n9b-review-slide');
+      var dots   = document.querySelectorAll('.n9b-review-dot');
+      var cur    = 0;
+      var timer;
+
+      function show(idx) {
+        slides[cur].classList.remove('active');
+        dots[cur].classList.remove('active');
+        cur = (idx + slides.length) % slides.length;
+        slides[cur].classList.add('active');
+        dots[cur].classList.add('active');
+      }
+
+      function advance() { show(cur + 1); }
+
+      function start() { timer = setInterval(advance, 5000); }
+      function stop()  { clearInterval(timer); }
+
+      window.n9bGoTo = function (idx) { stop(); show(idx); start(); };
+
+      start();
+    })();
+    </script>
     """,
     unsafe_allow_html=True,
 )

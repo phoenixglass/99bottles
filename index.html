@@ -300,6 +300,78 @@
         Ninety 9 Bottles on Facebook
       </a>
     </div>
+    <div class="fb-feed-wrap">
+      <iframe
+        src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fp%2FNinety9Bottles-100057827252531%2F&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+        width="500"
+        height="600"
+        scrolling="no"
+        style="border:none;"
+        allowfullscreen="true"
+        allow="clipboard-write; encrypted-media; picture-in-picture"
+        title="Ninety 9 Bottles Facebook Page">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- Customer Reviews -->
+  <section class="reviews" id="reviews">
+    <div class="section-header">
+      <span class="section-label">What Our Customers Say</span>
+      <h2 class="section-title" style="color:var(--text-light);">Customer Reviews</h2>
+      <p class="section-desc" style="color:var(--text-muted);">
+        See what our neighbors across Fairfield County are saying about Ninety 9 Bottles.
+      </p>
+    </div>
+    <div class="reviews-track-wrapper" id="reviewsWrapper">
+      <div class="review-slide active">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Best bottle shop in all of Fairfield County! The staff is incredibly knowledgeable and helped me find the perfect whiskey for my husband's birthday. We'll definitely be coming back — this place is a gem!"</p>
+          <div class="review-author">Sarah M.</div>
+          <div class="review-source">⭐ Facebook Review · Trumbull Location</div>
+        </div>
+      </div>
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Unbelievable craft beer selection. They always have so many hard-to-find local and regional brews that I can't find anywhere else. The staff is always happy to give recommendations — love this place!"</p>
+          <div class="review-author">James R.</div>
+          <div class="review-source">⭐ Facebook Review · Westport Location</div>
+        </div>
+      </div>
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"I've been coming to the Trumbull location for years. Great prices, a fantastic selection of wines and spirits, and the friendliest staff around. My absolute go-to bottle shop in CT!"</p>
+          <div class="review-author">Lisa T.</div>
+          <div class="review-source">⭐ Facebook Review · Trumbull Location</div>
+        </div>
+      </div>
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The Westport location never disappoints. Their wine selection is superb and they host great in-store tastings. Found my new favorite red wine there last weekend. Highly recommend!"</p>
+          <div class="review-author">Mike D.</div>
+          <div class="review-source">⭐ Facebook Review · Westport Location</div>
+        </div>
+      </div>
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Amazing spirits selection at the Norwalk shop! The staff really knows their stuff and pointed me to a small-batch bourbon I absolutely love. So happy to have a shop like this in our community."</p>
+          <div class="review-author">Amanda K.</div>
+          <div class="review-source">⭐ Facebook Review · Norwalk Location</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-dots" id="reviewDots">
+      <button class="review-dot active" onclick="goTo(0)" aria-label="Review 1"></button>
+      <button class="review-dot" onclick="goTo(1)" aria-label="Review 2"></button>
+      <button class="review-dot" onclick="goTo(2)" aria-label="Review 3"></button>
+      <button class="review-dot" onclick="goTo(3)" aria-label="Review 4"></button>
+      <button class="review-dot" onclick="goTo(4)" aria-label="Review 5"></button>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -351,6 +423,31 @@
       try { sessionStorage.setItem(SESSION_KEY, '1'); } catch (e) {}
       overlay.style.display = 'none';
     });
+
+    // Reviews carousel
+    (function () {
+      var slides = document.querySelectorAll('.review-slide');
+      var dots   = document.querySelectorAll('.review-dot');
+      var cur    = 0;
+      var timer;
+
+      function show(idx) {
+        slides[cur].classList.remove('active');
+        dots[cur].classList.remove('active');
+        cur = (idx + slides.length) % slides.length;
+        slides[cur].classList.add('active');
+        dots[cur].classList.add('active');
+      }
+
+      function advance() { show(cur + 1); }
+
+      function start() { timer = setInterval(advance, 5000); }
+      function stop()  { clearInterval(timer); }
+
+      window.goTo = function (idx) { stop(); show(idx); start(); };
+
+      start();
+    })();
   </script>
 </body>
 </html>
