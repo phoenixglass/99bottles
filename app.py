@@ -16,16 +16,19 @@ st.markdown(
     <style>
     /* ── Global ──────────────────────────────────────────── */
     :root {
-      --dark-bg: #1a1a2e;
-      --primary: #c8a96e;
-      --primary-dark: #a07840;
-      --text-light: #f0ece4;
-      --text-muted: #b0a89a;
+      --dark-bg: #1A1008;
+      --dark-bg-deep: #0F0A04;
+      --primary: #E8A000;
+      --primary-dark: #C47A00;
+      --primary-light: #F5C340;
+      --red: #C81A1A;
+      --text-light: #F5F0E8;
+      --text-muted: #B8A070;
       --card-bg: #ffffff;
-      --section-alt: #f8f5f0;
-      --border: #e0d6c8;
-      --shadow: 0 4px 20px rgba(0,0,0,.12);
-      --shadow-lg: 0 8px 40px rgba(0,0,0,.18);
+      --section-alt: #FBF6EE;
+      --border: #E8D8B8;
+      --shadow: 0 4px 20px rgba(0,0,0,.14);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,.24);
     }
 
     html, body, [data-testid="stAppViewContainer"] {
@@ -94,7 +97,7 @@ st.markdown(
 
     /* ── Hero ────────────────────────────────────────────── */
     .n9b-hero {
-      background: linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);
+      background: linear-gradient(135deg,#1A1008 0%,#200E05 45%,#2E1208 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -107,7 +110,7 @@ st.markdown(
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 60%,rgba(200,169,110,.12) 0%,transparent 70%);
+      background: radial-gradient(ellipse at 50% 60%,rgba(232,160,0,.10) 0%,transparent 65%);
     }
     .n9b-hero-content { position: relative; max-width: 780px; margin: 0 auto; }
     .n9b-eyebrow {
@@ -362,8 +365,7 @@ st.markdown(
 
     /* ── Gallery / Photos ────────────────────────────────── */
     .n9b-gallery { background: #ffffff; text-align: center; }
-    .n9b-gallery-cta { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
-    .n9b-gallery-icon { font-size: 4rem; line-height: 1; }
+    .n9b-gallery-cta { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
     .n9b-gallery-btn {
       display: inline-block;
       padding: 1rem 2.8rem;
@@ -495,21 +497,18 @@ st.markdown(
     .n9b-reviews .n9b-section-label { color: var(--primary); }
     .n9b-reviews .n9b-section-title { color: var(--text-light); }
     .n9b-reviews-track-wrapper {
-      position: relative;
+      display: grid;
       max-width: 760px;
       margin: 2.5rem auto 0;
-      min-height: 200px;
     }
     .n9b-review-slide {
-      position: absolute;
-      top: 0; left: 0; right: 0;
+      grid-area: 1 / 1;
       opacity: 0;
-      transition: opacity 0.8s ease;
+      transition: opacity 0.65s ease;
       pointer-events: none;
     }
     .n9b-review-slide.active {
       opacity: 1;
-      position: relative;
       pointer-events: auto;
     }
     .n9b-review-card {
@@ -546,23 +545,49 @@ st.markdown(
       color: var(--text-muted);
       margin-top: 0.25rem;
     }
+    .n9b-review-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+    .n9b-review-prev, .n9b-review-next {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid rgba(232,160,0,0.45);
+      background: transparent;
+      color: var(--primary);
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+      flex-shrink: 0;
+    }
+    .n9b-review-prev:hover, .n9b-review-next:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--dark-bg);
+    }
     .n9b-review-dots {
       display: flex;
       justify-content: center;
       gap: 0.5rem;
-      margin-top: 1.8rem;
     }
     .n9b-review-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: rgba(200,169,110,0.3);
+      background: rgba(232,160,0,0.28);
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.3s;
       border: none;
       padding: 0;
     }
-    .n9b-review-dot.active { background: var(--primary); }
+    .n9b-review-dot.active { background: var(--primary); transform: scale(1.35); }
 
     /* ── Facebook Feed ───────────────────────────────────── */
     .n9b-fb-feed-wrap {
@@ -740,43 +765,41 @@ st.markdown(
 
         <div class="n9b-review-card">
           <div class="n9b-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="n9b-review-text">&#8220;Best bottle shop in Fairfield County. The staff is incredibly knowledgeable
-          and always helps me find exactly what I&#8217;m looking for. Huge selection of craft beers
-          that keeps me coming back every week.&#8221;</p>
+          <p class="n9b-review-text">&#8220;Hands down best liquor store in town. Owner Shore and manager Wit always
+          go above and beyond to satisfy all needs including special orders, delivery, curbside pickup, etc.
+          They have an amazing selection of wine, liquor, and craft beers.&#8221;</p>
           <div class="n9b-review-author">
             <div class="n9b-review-author-info">
-              <span class="n9b-review-name">Michael T.</span>
-              <span class="n9b-review-location">Trumbull location</span>
+              <span class="n9b-review-name">Christopher Dobransky</span>
+              <span class="n9b-review-location">Google Review</span>
             </div>
-            <div class="n9b-review-google-badge">{_GOOGLE_ICON}<span>Google Review</span></div>
+            <div class="n9b-review-google-badge">{_GOOGLE_ICON}<span>Google</span></div>
           </div>
         </div>
 
         <div class="n9b-review-card">
           <div class="n9b-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="n9b-review-text">&#8220;Amazing wine selection and the team genuinely cares about helping you
-          find the right bottle. I came in looking for a gift and walked out with the perfect
-          recommendation. Highly recommend the Westport store!&#8221;</p>
+          <p class="n9b-review-text">&#8220;Prompt &amp; knowledgeable service, some of the best prices on rare
+          &amp; expensive bottles, &amp; they will special order anything.&#8221;</p>
           <div class="n9b-review-author">
             <div class="n9b-review-author-info">
-              <span class="n9b-review-name">Sarah L.</span>
-              <span class="n9b-review-location">Westport location</span>
+              <span class="n9b-review-name">D. Fratino</span>
+              <span class="n9b-review-location">Google Review</span>
             </div>
-            <div class="n9b-review-google-badge">{_GOOGLE_ICON}<span>Google Review</span></div>
+            <div class="n9b-review-google-badge">{_GOOGLE_ICON}<span>Google</span></div>
           </div>
         </div>
 
         <div class="n9b-review-card">
           <div class="n9b-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="n9b-review-text">&#8220;Great little spot with a carefully curated selection and fair prices.
-          The owner is super nice and knowledgeable. The tequila and whiskey section alone is worth
-          the visit. My go-to shop in Norwalk!&#8221;</p>
+          <p class="n9b-review-text">&#8220;Great selection, friendly staff, and great prices. I specifically enjoy
+          their tequila selection of additive-free tequilas.&#8221;</p>
           <div class="n9b-review-author">
             <div class="n9b-review-author-info">
-              <span class="n9b-review-name">James R.</span>
-              <span class="n9b-review-location">Norwalk location</span>
+              <span class="n9b-review-name">Chris Ten Eyck</span>
+              <span class="n9b-review-location">Google Review</span>
             </div>
-            <div class="n9b-review-google-badge">{_GOOGLE_ICON}<span>Google Review</span></div>
+            <div class="n9b-review-google-badge">{_GOOGLE_ICON}<span>Google</span></div>
           </div>
         </div>
 
@@ -960,12 +983,15 @@ st.markdown(
         </p>
       </div>
       <div class="n9b-gallery-cta">
-        <div class="n9b-gallery-icon" aria-hidden="true">📷</div>
-        <a href="https://share.google/wlVKOBrsN7oLDEADn"
-           target="_blank"
-           rel="noopener noreferrer"
+        <a href="https://share.google/4DiLdeYIrA7AEgSjY"
+           target="_blank" rel="noopener noreferrer"
            class="n9b-gallery-btn">
-          View All Photos on Google Photos
+          📷 Westport Photos
+        </a>
+        <a href="https://share.google/WUEMmXUuoYxmTXAcf"
+           target="_blank" rel="noopener noreferrer"
+           class="n9b-gallery-btn">
+          📷 Trumbull Photos
         </a>
       </div>
     </section>
@@ -1026,74 +1052,114 @@ st.markdown(
         <div class="n9b-review-slide active">
           <div class="n9b-review-card">
             <div class="n9b-review-stars">★★★★★</div>
-            <p class="n9b-review-text">"Best bottle shop in all of Fairfield County! The staff is incredibly knowledgeable and helped me find the perfect whiskey for my husband's birthday. We'll definitely be coming back — this place is a gem!"</p>
-            <div class="n9b-review-author">Sarah M.</div>
-            <div class="n9b-review-source">⭐ Facebook Review · Trumbull Location</div>
+            <p class="n9b-review-text">"Hands down best liquor store in town. Owner Shore and manager Wit always go above and beyond to satisfy all needs including special orders, delivery, curbside pickup, etc. They have an amazing selection of wine, liquor, and craft beers."</p>
+            <div class="n9b-review-author">Christopher Dobransky</div>
+            <div class="n9b-review-source">Google Review</div>
           </div>
         </div>
         <div class="n9b-review-slide">
           <div class="n9b-review-card">
             <div class="n9b-review-stars">★★★★★</div>
-            <p class="n9b-review-text">"Unbelievable craft beer selection. They always have so many hard-to-find local and regional brews that I can't find anywhere else. The staff is always happy to give recommendations — love this place!"</p>
-            <div class="n9b-review-author">James R.</div>
-            <div class="n9b-review-source">⭐ Facebook Review · Westport Location</div>
+            <p class="n9b-review-text">"The staff here is incredibly helpful and friendly. I went in not sure of what kind of Chardonnay I wanted and the staff were super knowledgeable and helped me pick out the perfect one. This is my favorite liquor store to go to."</p>
+            <div class="n9b-review-author">Jennifer G.</div>
+            <div class="n9b-review-source">Google Review</div>
           </div>
         </div>
         <div class="n9b-review-slide">
           <div class="n9b-review-card">
             <div class="n9b-review-stars">★★★★★</div>
-            <p class="n9b-review-text">"I've been coming to the Trumbull location for years. Great prices, a fantastic selection of wines and spirits, and the friendliest staff around. My absolute go-to bottle shop in CT!"</p>
-            <div class="n9b-review-author">Lisa T.</div>
-            <div class="n9b-review-source">⭐ Facebook Review · Trumbull Location</div>
+            <p class="n9b-review-text">"Went in there with an idea of what beer I wanted and the owner was so helpful. After listening to what I like, he made a couple of suggestions and was able to tell me about the beers—they were craft. I loved the beers. 'Nuff said."</p>
+            <div class="n9b-review-author">RJ Davis</div>
+            <div class="n9b-review-source">Google Review</div>
           </div>
         </div>
         <div class="n9b-review-slide">
           <div class="n9b-review-card">
             <div class="n9b-review-stars">★★★★★</div>
-            <p class="n9b-review-text">"The Westport location never disappoints. Their wine selection is superb and they host great in-store tastings. Found my new favorite red wine there last weekend. Highly recommend!"</p>
-            <div class="n9b-review-author">Mike D.</div>
-            <div class="n9b-review-source">⭐ Facebook Review · Westport Location</div>
+            <p class="n9b-review-text">"This place is fantastic. Great craft beer and sake selection. Owner is super knowledgeable and unpretentious. Great for custom orders."</p>
+            <div class="n9b-review-author">Zach Harris</div>
+            <div class="n9b-review-source">Google Review</div>
           </div>
         </div>
         <div class="n9b-review-slide">
           <div class="n9b-review-card">
             <div class="n9b-review-stars">★★★★★</div>
-            <p class="n9b-review-text">"Amazing spirits selection at the Norwalk shop! The staff really knows their stuff and pointed me to a small-batch bourbon I absolutely love. So happy to have a shop like this in our community."</p>
-            <div class="n9b-review-author">Amanda K.</div>
-            <div class="n9b-review-source">⭐ Facebook Review · Norwalk Location</div>
+            <p class="n9b-review-text">"Prompt &amp; knowledgeable service, some of the best prices on rare &amp; expensive bottles, &amp; they will special order anything."</p>
+            <div class="n9b-review-author">D. Fratino</div>
+            <div class="n9b-review-source">Google Review</div>
+          </div>
+        </div>
+        <div class="n9b-review-slide">
+          <div class="n9b-review-card">
+            <div class="n9b-review-stars">★★★★★</div>
+            <p class="n9b-review-text">"The best liquor store around. What you see is what you get here and their craft beer selection is unmatched in the area."</p>
+            <div class="n9b-review-author">Adam Ryan</div>
+            <div class="n9b-review-source">Google Review</div>
+          </div>
+        </div>
+        <div class="n9b-review-slide">
+          <div class="n9b-review-card">
+            <div class="n9b-review-stars">★★★★★</div>
+            <p class="n9b-review-text">"Great selection, friendly staff, and great prices. I specifically enjoy their tequila selection of additive-free tequilas."</p>
+            <div class="n9b-review-author">Chris Ten Eyck</div>
+            <div class="n9b-review-source">Google Review</div>
+          </div>
+        </div>
+        <div class="n9b-review-slide">
+          <div class="n9b-review-card">
+            <div class="n9b-review-stars">★★★★★</div>
+            <p class="n9b-review-text">"Extensive selection. Knowledgeable and extremely helpful staff. I wish it was closer to where I live!"</p>
+            <div class="n9b-review-author">Justine Stabile</div>
+            <div class="n9b-review-source">Google Review</div>
           </div>
         </div>
       </div>
-      <div class="n9b-review-dots" id="n9bReviewDots">
-        <button class="n9b-review-dot active" onclick="n9bGoTo(0)" aria-label="Review 1"></button>
-        <button class="n9b-review-dot" onclick="n9bGoTo(1)" aria-label="Review 2"></button>
-        <button class="n9b-review-dot" onclick="n9bGoTo(2)" aria-label="Review 3"></button>
-        <button class="n9b-review-dot" onclick="n9bGoTo(3)" aria-label="Review 4"></button>
-        <button class="n9b-review-dot" onclick="n9bGoTo(4)" aria-label="Review 5"></button>
+      <div class="n9b-review-controls">
+        <button class="n9b-review-prev" id="n9bPrev" aria-label="Previous review">&#8592;</button>
+        <div class="n9b-review-dots" id="n9bReviewDots">
+          <button class="n9b-review-dot active" aria-label="Review 1"></button>
+          <button class="n9b-review-dot" aria-label="Review 2"></button>
+          <button class="n9b-review-dot" aria-label="Review 3"></button>
+          <button class="n9b-review-dot" aria-label="Review 4"></button>
+          <button class="n9b-review-dot" aria-label="Review 5"></button>
+          <button class="n9b-review-dot" aria-label="Review 6"></button>
+          <button class="n9b-review-dot" aria-label="Review 7"></button>
+          <button class="n9b-review-dot" aria-label="Review 8"></button>
+        </div>
+        <button class="n9b-review-next" id="n9bNext" aria-label="Next review">&#8594;</button>
       </div>
     </section>
 
     <script>
     (function () {
-      var slides = document.querySelectorAll('.n9b-review-slide');
+      var wrapper = document.getElementById('n9bReviewsWrapper');
+      if (!wrapper) return;
+      var slides = wrapper.querySelectorAll('.n9b-review-slide');
       var dots   = document.querySelectorAll('.n9b-review-dot');
-      var cur    = 0;
-      var timer;
+      var prev   = document.getElementById('n9bPrev');
+      var next   = document.getElementById('n9bNext');
+      var cur    = 0, timer;
 
       function show(idx) {
+        var n = ((idx % slides.length) + slides.length) % slides.length;
         slides[cur].classList.remove('active');
-        dots[cur].classList.remove('active');
-        cur = (idx + slides.length) % slides.length;
+        if (dots[cur]) dots[cur].classList.remove('active');
+        cur = n;
         slides[cur].classList.add('active');
-        dots[cur].classList.add('active');
+        if (dots[cur]) dots[cur].classList.add('active');
       }
 
-      function advance() { show(cur + 1); }
-
-      function start() { timer = setInterval(advance, 5000); }
+      function start() { timer = setInterval(function() { show(cur + 1); }, 5500); }
       function stop()  { clearInterval(timer); }
 
-      window.n9bGoTo = function (idx) { stop(); show(idx); start(); };
+      if (prev) prev.addEventListener('click', function() { stop(); show(cur - 1); start(); });
+      if (next) next.addEventListener('click', function() { stop(); show(cur + 1); start(); });
+      dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() { stop(); show(i); start(); });
+      });
+
+      wrapper.addEventListener('mouseenter', stop);
+      wrapper.addEventListener('mouseleave', start);
 
       start();
     })();
