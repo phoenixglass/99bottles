@@ -305,6 +305,25 @@ st.markdown(
     .n9b-hours-table td:first-child { text-align: left; color: var(--text-muted); }
     .n9b-hours-table td:last-child { text-align: right; color: var(--text-light); font-weight: bold; }
 
+    /* ── Gallery / Photos ────────────────────────────────── */
+    .n9b-gallery { background: #ffffff; text-align: center; }
+    .n9b-gallery-cta { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+    .n9b-gallery-icon { font-size: 4rem; line-height: 1; }
+    .n9b-gallery-btn {
+      display: inline-block;
+      padding: 1rem 2.8rem;
+      background: var(--primary);
+      color: #1a1a2e;
+      font-family: Arial, sans-serif;
+      font-size: .9rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+    .n9b-gallery-btn:hover { background: var(--primary-dark); }
+
     /* ── Social ──────────────────────────────────────────── */
     .n9b-social-links { display: flex; justify-content: center; margin-top: 2rem; }
     .n9b-social-fb {
@@ -560,6 +579,7 @@ st.markdown(
         <li><a href="#about">About</a></li>
         <li><a href="#locations">Locations</a></li>
         <li><a href="#hours">Hours</a></li>
+        <li><a href="#photos">Photos</a></li>
         <li><a href="#social">Follow Us</a></li>
       </ul>
     </nav>
@@ -796,6 +816,32 @@ st.markdown(
           <tr><td>Sunday</td><td>10:00 AM – 5:00 PM</td></tr>
         </tbody>
       </table>
+    </section>
+    """,
+    unsafe_allow_html=True,
+)
+
+# ── Photos / Gallery ─────────────────────────────────────────────────────────
+st.markdown(
+    """
+    <section class="n9b-section n9b-gallery" id="photos">
+      <div class="n9b-section-header">
+        <span class="n9b-section-label">Inside Our Stores</span>
+        <h2 class="n9b-section-title">Photo Gallery</h2>
+        <p class="n9b-section-desc">
+          Take a peek inside our Fairfield County locations—browse our curated
+          selection of craft beers, wines, and spirits.
+        </p>
+      </div>
+      <div class="n9b-gallery-cta">
+        <div class="n9b-gallery-icon" aria-hidden="true">📷</div>
+        <a href="https://share.google/wlVKOBrsN7oLDEADn"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="n9b-gallery-btn">
+          View All Photos on Google Photos
+        </a>
+      </div>
     </section>
     """,
     unsafe_allow_html=True,
