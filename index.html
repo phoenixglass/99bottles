@@ -13,7 +13,7 @@
   <div class="age-gate-overlay" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
     <div class="age-gate-box">
       <div class="age-gate-logo">99</div>
-      <div class="age-gate-brand">Ninety 9 Bottles</div>
+      <div class="age-gate-brand">Ninety 9 Bottles · Fairfield County, CT</div>
       <h2 id="ageGateTitle">Are you 21 or older?</h2>
       <p>You must be of legal drinking age to enter this website. Please verify your age to continue.</p>
       <div class="age-gate-btns">
@@ -339,12 +339,16 @@
     const yesBtn  = document.getElementById('ageYes');
     const SESSION_KEY = 'n9b_age_verified';
 
-    if (sessionStorage.getItem(SESSION_KEY)) {
-      overlay.style.display = 'none';
+    try {
+      if (sessionStorage.getItem(SESSION_KEY)) {
+        overlay.style.display = 'none';
+      }
+    } catch (e) {
+      // sessionStorage unavailable; show gate normally
     }
 
     yesBtn.addEventListener('click', function () {
-      sessionStorage.setItem(SESSION_KEY, '1');
+      try { sessionStorage.setItem(SESSION_KEY, '1'); } catch (e) {}
       overlay.style.display = 'none';
     });
   </script>
