@@ -279,6 +279,61 @@ st.markdown(
     }
     .n9b-map-btn:hover { background: var(--primary); color: var(--dark-bg); }
 
+    /* ── Reviews banner ──────────────────────────────────── */
+    .n9b-reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .n9b-review-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem 1.8rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .n9b-review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .n9b-review-stars { color: #f5a623; font-size: 1.2rem; letter-spacing: .05em; }
+    .n9b-review-text {
+      font-size: .97rem;
+      color: #444;
+      line-height: 1.7;
+      font-style: italic;
+      flex: 1;
+    }
+    .n9b-review-author {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    .n9b-review-author-info { display: flex; flex-direction: column; gap: .15rem; }
+    .n9b-review-name { font-family: Arial, sans-serif; font-size: .9rem; font-weight: bold; color: #1a1a2e; }
+    .n9b-review-location {
+      font-family: Arial, sans-serif;
+      font-size: .75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .n9b-review-google-badge {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+      font-family: Arial, sans-serif;
+      font-size: .72rem;
+      color: #888;
+      flex-shrink: 0;
+    }
+
     /* ── Hours banner ────────────────────────────────────── */
     .n9b-hours-banner {
       background: var(--dark-bg);
@@ -577,6 +632,7 @@ st.markdown(
       </a>
       <ul class="n9b-nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
         <li><a href="#locations">Locations</a></li>
         <li><a href="#hours">Hours</a></li>
         <li><a href="#photos">Photos</a></li>
@@ -654,6 +710,76 @@ st.markdown(
           <h3>Community Roots</h3>
           <p>Locally owned and deeply connected to the Fairfield County community—we treat every customer like a neighbor.</p>
         </div>
+      </div>
+    </section>
+    """,
+    unsafe_allow_html=True,
+)
+
+# ── Reviews Banner ────────────────────────────────────────────────────────────
+_GOOGLE_ICON = (
+    '<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">'
+    '<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>'
+    '<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>'
+    '<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>'
+    '<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>'
+    '</svg>'
+)
+
+st.markdown(
+    f"""
+    <section class="n9b-section n9b-section-alt" id="reviews">
+      <div class="n9b-section-header">
+        <span class="n9b-section-label">What Our Customers Say</span>
+        <h2 class="n9b-section-title">Loved by Fairfield County</h2>
+        <p class="n9b-section-desc">
+          Real reviews from our neighbors on Google. We&#8217;re proud to serve this community.
+        </p>
+      </div>
+      <div class="n9b-reviews-grid">
+
+        <div class="n9b-review-card">
+          <div class="n9b-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="n9b-review-text">&#8220;Best bottle shop in Fairfield County. The staff is incredibly knowledgeable
+          and always helps me find exactly what I&#8217;m looking for. Huge selection of craft beers
+          that keeps me coming back every week.&#8221;</p>
+          <div class="n9b-review-author">
+            <div class="n9b-review-author-info">
+              <span class="n9b-review-name">Michael T.</span>
+              <span class="n9b-review-location">Trumbull location</span>
+            </div>
+            <div class="n9b-review-google-badge">{_GOOGLE_ICON}<span>Google Review</span></div>
+          </div>
+        </div>
+
+        <div class="n9b-review-card">
+          <div class="n9b-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="n9b-review-text">&#8220;Amazing wine selection and the team genuinely cares about helping you
+          find the right bottle. I came in looking for a gift and walked out with the perfect
+          recommendation. Highly recommend the Westport store!&#8221;</p>
+          <div class="n9b-review-author">
+            <div class="n9b-review-author-info">
+              <span class="n9b-review-name">Sarah L.</span>
+              <span class="n9b-review-location">Westport location</span>
+            </div>
+            <div class="n9b-review-google-badge">{_GOOGLE_ICON}<span>Google Review</span></div>
+          </div>
+        </div>
+
+        <div class="n9b-review-card">
+          <div class="n9b-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="n9b-review-text">&#8220;Great little spot with a carefully curated selection and fair prices.
+          The owner is super nice and knowledgeable. The tequila and whiskey section alone is worth
+          the visit. My go-to shop in Norwalk!&#8221;</p>
+          <div class="n9b-review-author">
+            <div class="n9b-review-author-info">
+              <span class="n9b-review-name">James R.</span>
+              <span class="n9b-review-location">Norwalk location</span>
+            </div>
+            <div class="n9b-review-google-badge">{_GOOGLE_ICON}<span>Google Review</span></div>
+          </div>
+        </div>
+
       </div>
     </section>
     """,

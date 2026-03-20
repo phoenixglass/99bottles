@@ -272,6 +272,90 @@ section {
   font-family: 'Arial', sans-serif;
 }
 
+/* ── Reviews ─────────────────────────────────── */
+.reviews {
+  background: var(--section-alt);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.review-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem 1.8rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.review-stars {
+  color: #f5a623;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+.review-text {
+  font-size: 0.97rem;
+  color: #444;
+  line-height: 1.7;
+  font-style: italic;
+  flex: 1;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.review-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.review-name {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #1a1a2e;
+}
+
+.review-location {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.review-google-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Arial', sans-serif;
+  font-size: 0.72rem;
+  color: #888;
+  flex-shrink: 0;
+}
+
 /* ── Locations ───────────────────────────────── */
 .locations {
   background: #ffffff;
