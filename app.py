@@ -561,8 +561,6 @@ st.markdown(
         </p>
       </div>
       <div class="n9b-locations-grid">
-
-        <!-- Trumbull -->
         <div class="n9b-location-card">
           <div class="n9b-location-header">
             <div class="n9b-location-city">Trumbull</div>
@@ -603,8 +601,6 @@ st.markdown(
             </a>
           </div>
         </div>
-
-        <!-- Westport -->
         <div class="n9b-location-card">
           <div class="n9b-location-header">
             <div class="n9b-location-city">Westport</div>
@@ -645,8 +641,6 @@ st.markdown(
             </a>
           </div>
         </div>
-
-        <!-- Norwalk -->
         <div class="n9b-location-card">
           <div class="n9b-location-header">
             <div class="n9b-location-city">Norwalk</div>
@@ -687,7 +681,6 @@ st.markdown(
             </a>
           </div>
         </div>
-
       </div>
     </section>
     """,
