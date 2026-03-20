@@ -606,6 +606,112 @@ footer {
   flex: 1;
 }
 
+/* ── Reviews Carousel ────────────────────────────── */
+.reviews {
+  background: var(--dark-bg);
+  padding: 5rem 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.reviews .section-label { color: var(--primary); }
+.reviews .section-title { color: var(--text-light); }
+.reviews .section-desc  { color: var(--text-muted); }
+
+.reviews-track-wrapper {
+  position: relative;
+  max-width: 760px;
+  margin: 2.5rem auto 0;
+  min-height: 200px;
+}
+
+.review-slide {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+.review-slide.active {
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+}
+
+.review-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(200, 169, 110, 0.25);
+  border-radius: 10px;
+  padding: 2rem 2.5rem;
+  text-align: center;
+}
+
+.review-stars {
+  color: #FFD700;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.review-author {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.review-source {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.review-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.8rem;
+}
+
+.review-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(200, 169, 110, 0.3);
+  cursor: pointer;
+  transition: background 0.3s;
+  border: none;
+  padding: 0;
+}
+
+.review-dot.active { background: var(--primary); }
+
+/* ── Facebook Feed ────────────────────────────────── */
+.fb-feed-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.fb-feed-wrap iframe {
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 100%;
+}
+
 /* ── Responsive ──────────────────────────────── */
 @media (max-width: 768px) {
   .nav-links {
