@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ninety 9 Bottles | Beer, Wine &amp; Spirits – Fairfield County, CT</title>
   <meta name="description" content="Ninety 9 Bottles is Fairfield County's favorite locally owned beer, wine, and spirits shop. Three locations in Trumbull, Westport, and Norwalk, CT." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,9 +15,7 @@
   <!-- Age Verification Gate -->
   <div class="age-gate-overlay" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
     <div class="age-gate-box">
-      <img src="logo.png" alt="Ninety 9 Bottles" class="age-gate-logo-img"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <div class="age-gate-logo" style="display:none;">99</div>
+      <div class="age-gate-logo">99</div>
       <div class="age-gate-brand">Ninety 9 Bottles · Fairfield County, CT</div>
       <h2 id="ageGateTitle">Are you 21 or older?</h2>
       <p>You must be of legal drinking age to enter this website. Please verify your age to continue.</p>
@@ -28,14 +29,10 @@
   <!-- Navigation -->
   <nav>
     <a href="#home" class="nav-brand">
-      <img src="logo.png" alt="Ninety 9 Bottles" class="nav-logo-img"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <span class="nav-logo-text-fallback" style="display:none;">
-        <span class="nav-logo-num">99</span>
-        <span class="nav-logo-text">Ninety 9 Bottles<br>Fairfield County, CT</span>
-      </span>
+      <span class="nav-logo-num">99</span>
+      <span class="nav-logo-text">Ninety 9 Bottles<br>Fairfield County, CT</span>
     </a>
-    <ul class="nav-links" id="navLinks">
+    <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#locations">Locations</a></li>
@@ -43,20 +40,28 @@
       <li><a href="#photos">Photos</a></li>
       <li><a href="#social">Follow Us</a></li>
     </ul>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </button>
   </nav>
 
+  <!-- Mobile Navigation Overlay -->
+  <div class="nav-mobile" id="navMobile" role="dialog" aria-label="Site navigation">
+    <a href="#about" class="nav-mobile-link">About</a>
+    <a href="#reviews" class="nav-mobile-link">Reviews</a>
+    <a href="#locations" class="nav-mobile-link">Locations</a>
+    <a href="#hours" class="nav-mobile-link">Hours</a>
+    <a href="#photos" class="nav-mobile-link">Photos</a>
+    <a href="#social" class="nav-mobile-link">Follow Us</a>
+  </div>
+
   <!-- Hero -->
   <section class="hero" id="home">
     <div class="hero-content">
       <p class="hero-eyebrow">Fairfield County's Favorite Bottle Shop</p>
-      <img src="logo.png" alt="Ninety 9 Bottles" class="hero-logo-img"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <h1 class="hero-title" style="display:none;"><span>Ninety 9</span><br>Bottles</h1>
+      <h1 class="hero-title"><span>Ninety 9</span><br>Bottles</h1>
       <p class="hero-subtitle">Beer &bull; Wine &bull; Spirits</p>
       <p class="hero-desc">
         Your locally owned neighborhood bottle shop—three convenient locations
@@ -115,8 +120,8 @@
     </div>
   </section>
 
-  <!-- Testimonials Carousel -->
-  <section class="testimonials" id="reviews">
+  <!-- Reviews Carousel -->
+  <section class="reviews" id="reviews">
     <div class="section-header">
       <span class="section-label">What Our Customers Say</span>
       <h2 class="section-title">Loved by Fairfield County</h2>
@@ -125,162 +130,96 @@
       </p>
     </div>
 
-    <div class="carousel-container">
-      <div class="carousel-track" id="carouselTrack">
+    <div class="reviews-track-wrapper" id="reviewsWrapper">
 
-        <div class="carousel-slide active">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">"Hands down best liquor store in town. Owner Shore and manager Wit always go above and beyond to satisfy all needs including special orders, delivery, curbside pickup, etc. They have an amazing selection of wine, liquor, and craft beers."</p>
-            <div class="testimonial-attribution">
-              <div class="testimonial-author-info">
-                <span class="testimonial-author">Christopher Dobransky</span>
-                <span class="testimonial-loc">Google Review</span>
-              </div>
-              <span class="testimonial-source-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                Google
-              </span>
-            </div>
-          </div>
+      <div class="review-slide active">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Hands down best liquor store in town. Owner Shore and manager Wit always go above and beyond to satisfy all needs including special orders, delivery, curbside pickup, etc. They have an amazing selection of wine, liquor, and craft beers."</p>
+          <div class="review-author">Christopher Dobransky</div>
+          <div class="review-source">Google Review</div>
         </div>
-
-        <div class="carousel-slide">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">"The staff here is incredibly helpful and friendly. I went in not sure of what kind of Chardonnay I wanted and the staff were super knowledgeable and helped me pick out the perfect one. This is my favorite liquor store to go to."</p>
-            <div class="testimonial-attribution">
-              <div class="testimonial-author-info">
-                <span class="testimonial-author">Jennifer G.</span>
-                <span class="testimonial-loc">Google Review</span>
-              </div>
-              <span class="testimonial-source-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                Google
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-slide">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">"Went in there with an idea of what beer I wanted and the owner was so helpful. After listening to what I like, he made a couple of suggestions and was able to tell me about the beers—they were craft. I loved the beers. 'Nuff said."</p>
-            <div class="testimonial-attribution">
-              <div class="testimonial-author-info">
-                <span class="testimonial-author">RJ Davis</span>
-                <span class="testimonial-loc">Google Review</span>
-              </div>
-              <span class="testimonial-source-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                Google
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-slide">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">"This place is fantastic. Great craft beer and sake selection. Owner is super knowledgeable and unpretentious. Great for custom orders."</p>
-            <div class="testimonial-attribution">
-              <div class="testimonial-author-info">
-                <span class="testimonial-author">Zach Harris</span>
-                <span class="testimonial-loc">Google Review</span>
-              </div>
-              <span class="testimonial-source-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                Google
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-slide">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">"Prompt &amp; knowledgeable service, some of the best prices on rare &amp; expensive bottles, &amp; they will special order anything."</p>
-            <div class="testimonial-attribution">
-              <div class="testimonial-author-info">
-                <span class="testimonial-author">D. Fratino</span>
-                <span class="testimonial-loc">Google Review</span>
-              </div>
-              <span class="testimonial-source-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                Google
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-slide">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">"The best liquor store around. I stopped going to places where they hide the good beer. No thanks. What you see is what you get here and their craft beer selection is unmatched in the area."</p>
-            <div class="testimonial-attribution">
-              <div class="testimonial-author-info">
-                <span class="testimonial-author">Adam Ryan</span>
-                <span class="testimonial-loc">Google Review</span>
-              </div>
-              <span class="testimonial-source-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                Google
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-slide">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">"Great selection, friendly staff, and great prices. I specifically enjoy their tequila selection of additive-free tequilas."</p>
-            <div class="testimonial-attribution">
-              <div class="testimonial-author-info">
-                <span class="testimonial-author">Chris Ten Eyck</span>
-                <span class="testimonial-loc">Google Review</span>
-              </div>
-              <span class="testimonial-source-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                Google
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-slide">
-          <div class="testimonial-card">
-            <div class="testimonial-stars">★★★★★</div>
-            <p class="testimonial-quote">"Extensive selection. Knowledgeable and extremely helpful staff. I wish it was closer to where I live!"</p>
-            <div class="testimonial-attribution">
-              <div class="testimonial-author-info">
-                <span class="testimonial-author">Justine Stabile</span>
-                <span class="testimonial-loc">Google Review</span>
-              </div>
-              <span class="testimonial-source-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                Google
-              </span>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /.carousel-track -->
-
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="carouselPrev" aria-label="Previous review">&#8592;</button>
-        <div class="carousel-dots" id="carouselDots">
-          <button class="carousel-dot active" aria-label="Review 1"></button>
-          <button class="carousel-dot" aria-label="Review 2"></button>
-          <button class="carousel-dot" aria-label="Review 3"></button>
-          <button class="carousel-dot" aria-label="Review 4"></button>
-          <button class="carousel-dot" aria-label="Review 5"></button>
-          <button class="carousel-dot" aria-label="Review 6"></button>
-          <button class="carousel-dot" aria-label="Review 7"></button>
-          <button class="carousel-dot" aria-label="Review 8"></button>
-        </div>
-        <button class="carousel-btn" id="carouselNext" aria-label="Next review">&#8594;</button>
       </div>
-    </div><!-- /.carousel-container -->
+
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The staff here is incredibly helpful and friendly. I went in not sure of what kind of Chardonnay I wanted and the staff were super knowledgeable and helped me pick out the perfect one. This is my favorite liquor store to go to."</p>
+          <div class="review-author">Jennifer G.</div>
+          <div class="review-source">Google Review</div>
+        </div>
+      </div>
+
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Went in there with an idea of what beer I wanted and the owner was so helpful. After listening to what I like, he made a couple of suggestions and was able to tell me about the beers—they were craft. I loved the beers. 'Nuff said."</p>
+          <div class="review-author">RJ Davis</div>
+          <div class="review-source">Google Review</div>
+        </div>
+      </div>
+
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"This place is fantastic. Great craft beer and sake selection. Owner is super knowledgeable and unpretentious. Great for custom orders."</p>
+          <div class="review-author">Zach Harris</div>
+          <div class="review-source">Google Review</div>
+        </div>
+      </div>
+
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Prompt &amp; knowledgeable service, some of the best prices on rare &amp; expensive bottles, &amp; they will special order anything."</p>
+          <div class="review-author">D. Fratino</div>
+          <div class="review-source">Google Review</div>
+        </div>
+      </div>
+
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"The best liquor store around. I stopped going to places where they hide the good beer. No thanks. What you see is what you get here and their craft beer selection is unmatched in the area."</p>
+          <div class="review-author">Adam Ryan</div>
+          <div class="review-source">Google Review</div>
+        </div>
+      </div>
+
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Great selection, friendly staff, and great prices. I specifically enjoy their tequila selection of additive-free tequilas."</p>
+          <div class="review-author">Chris Ten Eyck</div>
+          <div class="review-source">Google Review</div>
+        </div>
+      </div>
+
+      <div class="review-slide">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Extensive selection. Knowledgeable and extremely helpful staff. I wish it was closer to where I live!"</p>
+          <div class="review-author">Justine Stabile</div>
+          <div class="review-source">Google Review</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="review-controls">
+      <button class="review-prev" id="reviewPrev" aria-label="Previous review">&#8592;</button>
+      <div class="review-dots" id="reviewDots">
+        <button class="review-dot active" aria-label="Review 1"></button>
+        <button class="review-dot" aria-label="Review 2"></button>
+        <button class="review-dot" aria-label="Review 3"></button>
+        <button class="review-dot" aria-label="Review 4"></button>
+        <button class="review-dot" aria-label="Review 5"></button>
+        <button class="review-dot" aria-label="Review 6"></button>
+        <button class="review-dot" aria-label="Review 7"></button>
+        <button class="review-dot" aria-label="Review 8"></button>
+      </div>
+      <button class="review-next" id="reviewNext" aria-label="Next review">&#8594;</button>
+    </div>
   </section>
 
   <!-- Locations -->
@@ -333,10 +272,10 @@
           </div>
           <div class="location-card-btns">
             <a href="https://maps.google.com/?q=4244+Madison+Ave,+Trumbull,+CT+06611" target="_blank" rel="noopener" class="location-map-btn">
-              📍 Get Directions
+              📍 Directions
             </a>
             <a href="https://share.google/WUEMmXUuoYxmTXAcf" target="_blank" rel="noopener" class="location-photos-btn">
-              📷 View Photos
+              📷 Photos
             </a>
           </div>
         </div>
@@ -379,10 +318,10 @@
           </div>
           <div class="location-card-btns">
             <a href="https://maps.google.com/?q=9+Bridge+Square,+Westport,+CT+06880" target="_blank" rel="noopener" class="location-map-btn">
-              📍 Get Directions
+              📍 Directions
             </a>
             <a href="https://share.google/4DiLdeYIrA7AEgSjY" target="_blank" rel="noopener" class="location-photos-btn">
-              📷 View Photos
+              📷 Photos
             </a>
           </div>
         </div>
@@ -504,7 +443,6 @@
         width="500"
         height="600"
         scrolling="no"
-        style="border:none;"
         allowfullscreen="true"
         allow="clipboard-write; encrypted-media; picture-in-picture"
         title="Ninety 9 Bottles Facebook Page">
@@ -514,9 +452,7 @@
 
   <!-- Footer -->
   <footer>
-    <img src="logo.png" alt="Ninety 9 Bottles" class="footer-logo-img"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-    <div class="footer-logo" style="display:none;">99</div>
+    <div class="footer-logo">99</div>
     <div class="footer-tagline">Ninety 9 Bottles · Fairfield County, CT</div>
     <div class="footer-locations">
       <div class="footer-location-item">
@@ -543,10 +479,43 @@
   </footer>
 
   <script>
-    // ── Year ──────────────────────────────────────────────────────────────────
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ── Age gate ──────────────────────────────────────────────────────────────
+    // Hamburger / mobile nav overlay
+    (function () {
+      var btn    = document.getElementById('navHamburger');
+      var mobile = document.getElementById('navMobile');
+      var links  = mobile.querySelectorAll('a');
+
+      function openMenu() {
+        btn.classList.add('open');
+        mobile.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        btn.classList.remove('open');
+        mobile.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      btn.addEventListener('click', function () {
+        btn.classList.contains('open') ? closeMenu() : openMenu();
+      });
+
+      links.forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+    })();
+
+    // Age gate
     (function () {
       var overlay = document.getElementById('ageGate');
       var yesBtn  = document.getElementById('ageYes');
@@ -558,33 +527,14 @@
       });
     })();
 
-    // ── Hamburger ─────────────────────────────────────────────────────────────
+    // Reviews carousel
     (function () {
-      var btn   = document.getElementById('navHamburger');
-      var links = document.getElementById('navLinks');
-      if (!btn || !links) return;
-      btn.addEventListener('click', function () {
-        var open = links.classList.toggle('open');
-        btn.classList.toggle('open', open);
-        btn.setAttribute('aria-expanded', String(open));
-      });
-      links.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () {
-          links.classList.remove('open');
-          btn.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-        });
-      });
-    })();
-
-    // ── Testimonials carousel ─────────────────────────────────────────────────
-    (function () {
-      var track  = document.getElementById('carouselTrack');
-      if (!track) return;
-      var slides = track.querySelectorAll('.carousel-slide');
-      var dots   = document.querySelectorAll('.carousel-dot');
-      var prev   = document.getElementById('carouselPrev');
-      var next   = document.getElementById('carouselNext');
+      var wrapper = document.getElementById('reviewsWrapper');
+      if (!wrapper) return;
+      var slides = wrapper.querySelectorAll('.review-slide');
+      var dots   = document.querySelectorAll('.review-dot');
+      var prev   = document.getElementById('reviewPrev');
+      var next   = document.getElementById('reviewNext');
       var cur    = 0, timer;
 
       function show(idx) {
@@ -601,13 +551,12 @@
 
       if (prev) prev.addEventListener('click', function () { stop(); show(cur - 1); start(); });
       if (next) next.addEventListener('click', function () { stop(); show(cur + 1); start(); });
-
       dots.forEach(function (dot, i) {
         dot.addEventListener('click', function () { stop(); show(i); start(); });
       });
 
-      track.addEventListener('mouseenter', stop);
-      track.addEventListener('mouseleave', start);
+      wrapper.addEventListener('mouseenter', stop);
+      wrapper.addEventListener('mouseleave', start);
 
       start();
     })();
