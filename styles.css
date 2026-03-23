@@ -4,9 +4,9 @@
 :root {
   --dark-bg: #12121f;
   --dark-surface: #1c1c30;
-  --primary: #d4a85a;
-  --primary-dark: #a8782a;
-  --primary-light: #f0c878;
+  --primary: #c8a96e;
+  --primary-dark: #9a7b45;
+  --primary-light: #e4c48a;
   --accent: #e74c3c;
   --text-light: #f5f0e8;
   --text-muted: #b8b0a0;
@@ -361,7 +361,7 @@ nav {
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #c8a96e 0%, var(--primary-dark) 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   transform: translateY(-2px);
   box-shadow: 0 10px 28px rgba(200, 169, 110, 0.45);
 }
@@ -888,6 +888,37 @@ footer {
 
 .age-gate-btns .btn {
   flex: 1;
+}
+
+/* ── Carousel Nav Arrows ─────────────────────── */
+.reviews-carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.carousel-arrow {
+  background: rgba(200, 169, 110, 0.12);
+  border: 1px solid rgba(200, 169, 110, 0.35);
+  color: var(--primary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.carousel-arrow:hover {
+  background: var(--primary);
+  color: #0e0e1c;
+  transform: scale(1.08);
 }
 
 /* ── Reviews Carousel ────────────────────────── */
