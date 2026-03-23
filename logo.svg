@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Ninety 9 Bottles">
+  <circle cx="32" cy="32" r="30" fill="#1a1a2e" stroke="#c8a96e" stroke-width="2"/>
+  <circle cx="32" cy="32" r="25" fill="none" stroke="#c8a96e" stroke-width="0.5" opacity="0.5"/>
+  <text x="32" y="43"
+        font-family="Georgia,'Times New Roman',serif"
+        font-size="26"
+        font-weight="700"
+        fill="#c8a96e"
+        text-anchor="middle">99</text>
+</svg>
