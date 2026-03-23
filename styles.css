@@ -392,7 +392,19 @@ section {
   line-height: 1.65;
 }
 
-/* ── Review Cards ────────────────────────────── */
+/* ── Reviews (static grid) ───────────────────── */
+.reviews {
+  background: var(--section-alt);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
 .review-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -593,42 +605,6 @@ section {
   color: var(--dark-bg);
 }
 
-.location-card-btns {
-  display: flex;
-  gap: 0.6rem;
-  margin-top: 1.4rem;
-}
-
-.location-card-btns .location-map-btn,
-.location-card-btns .location-photos-btn {
-  flex: 1;
-  margin-top: 0;
-}
-
-.location-photos-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem;
-  background: transparent;
-  color: var(--primary);
-  text-align: center;
-  text-decoration: none;
-  font-size: 0.76rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-weight: 700;
-  border-radius: 7px;
-  border: 1px solid var(--primary);
-  transition: background 0.25s, color 0.25s;
-  min-height: 44px;
-}
-
-.location-photos-btn:hover {
-  background: var(--primary);
-  color: var(--dark-bg);
-}
-
 /* ── Hours Banner ────────────────────────────── */
 .hours-banner {
   background: var(--dark-bg);
@@ -687,12 +663,21 @@ section {
   text-align: center;
 }
 
-.gallery-location-links {
+.gallery-cta {
   display: flex;
-  justify-content: center;
-  gap: 1.2rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.gallery-icon {
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.gallery-btn {
+  font-size: 0.88rem;
+  padding: 1rem 2.8rem;
 }
 
 /* ── Social / Facebook ───────────────────────── */
@@ -868,13 +853,15 @@ footer {
 .reviews .section-desc { color: var(--text-muted); }
 
 .reviews-track-wrapper {
-  display: grid;
+  position: relative;
   max-width: 700px;
   margin: 2.5rem auto 0;
+  min-height: 220px;
 }
 
 .review-slide {
-  grid-area: 1 / 1;
+  position: absolute;
+  top: 0; left: 0; right: 0;
   opacity: 0;
   transition: opacity 0.7s ease;
   pointer-events: none;
@@ -882,37 +869,8 @@ footer {
 
 .review-slide.active {
   opacity: 1;
+  position: relative;
   pointer-events: auto;
-}
-
-.review-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.8rem;
-}
-
-.review-prev, .review-next {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid rgba(200, 169, 110, 0.4);
-  background: transparent;
-  color: var(--primary);
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.25s;
-  flex-shrink: 0;
-}
-
-.review-prev:hover, .review-next:hover {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: var(--dark-bg);
 }
 
 /* Carousel card overrides */
@@ -966,6 +924,7 @@ footer {
   display: flex;
   justify-content: center;
   gap: 0.6rem;
+  margin-top: 2rem;
 }
 
 .review-dot {
@@ -1067,6 +1026,10 @@ footer {
   .hours-table td {
     padding: 0.6rem 0.75rem;
     font-size: 0.88rem;
+  }
+
+  .reviews-track-wrapper {
+    min-height: 280px;
   }
 
   .reviews-track-wrapper .review-card {
