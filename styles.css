@@ -60,12 +60,9 @@ nav {
   text-decoration: none;
 }
 
-.nav-logo-num {
-  font-family: 'Playfair Display', 'Georgia', serif;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--primary);
-  line-height: 1;
+.nav-logo-img {
+  display: block;
+  flex-shrink: 0;
 }
 
 .nav-logo-text {
@@ -392,19 +389,7 @@ section {
   line-height: 1.65;
 }
 
-/* ── Reviews (static grid) ───────────────────── */
-.reviews {
-  background: var(--section-alt);
-}
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
+/* ── Review Card (shared base) ───────────────── */
 .review-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -437,41 +422,8 @@ section {
 }
 
 .review-author {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  border-top: 1px solid var(--border);
-  padding-top: 1rem;
-  flex-wrap: wrap;
-}
-
-.review-author-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.review-name {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: #1a1a2e;
-}
-
-.review-location {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.review-google-badge {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.7rem;
-  color: #999;
-  flex-shrink: 0;
+  border-top: 1px solid rgba(200, 169, 110, 0.2);
+  padding-top: 0.75rem;
 }
 
 /* ── Locations ───────────────────────────────── */
@@ -726,13 +678,9 @@ footer {
   text-align: center;
 }
 
-.footer-logo {
-  font-family: 'Playfair Display', 'Georgia', serif;
-  font-size: 2.2rem;
-  color: var(--primary);
-  font-weight: 700;
-  margin-bottom: 0.3rem;
-  line-height: 1;
+.footer-logo-img {
+  display: block;
+  margin: 0 auto 0.3rem;
 }
 
 .footer-tagline {
@@ -796,13 +744,9 @@ footer {
   box-shadow: 0 0 80px rgba(200, 169, 110, 0.1);
 }
 
-.age-gate-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  color: var(--primary);
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 0.3rem;
+.age-gate-logo-img {
+  display: block;
+  margin: 0 auto 0.3rem;
 }
 
 .age-gate-brand {
@@ -842,7 +786,6 @@ footer {
   background: var(--dark-bg);
   padding: 5rem 1.5rem;
   text-align: center;
-  overflow: hidden;
 }
 
 .reviews .section-label { color: var(--primary); }
@@ -856,7 +799,7 @@ footer {
   position: relative;
   max-width: 700px;
   margin: 2.5rem auto 0;
-  min-height: 220px;
+  height: 280px;
 }
 
 .review-slide {
@@ -869,7 +812,6 @@ footer {
 
 .review-slide.active {
   opacity: 1;
-  position: relative;
   pointer-events: auto;
 }
 
@@ -1018,8 +960,7 @@ footer {
     padding: 1.4rem 1rem;
   }
 
-  .locations-grid,
-  .reviews-grid {
+  .locations-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1029,7 +970,7 @@ footer {
   }
 
   .reviews-track-wrapper {
-    min-height: 280px;
+    height: 320px;
   }
 
   .reviews-track-wrapper .review-card {
@@ -1063,10 +1004,5 @@ footer {
 
   .nav-logo-text {
     display: none;
-  }
-
-  .review-author {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
